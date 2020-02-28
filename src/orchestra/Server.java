@@ -14,8 +14,10 @@ public class Server {
 		IMusician musician = p_MusicianFac.AddMusician(instrument, name);
 		if (musician!=null) {
 			p_ListOfMusicians.add(musician);
+			verification(p_ListOfMusicians.indexOf(musician));
 			return p_ListOfMusicians.indexOf(musician);
 		}
+		verification(-1);
 		return -1; //if the instrument doesn't exist
 	}
 	
@@ -47,5 +49,12 @@ public class Server {
 				res++;
 		}
 		return res;
+	}
+	
+	private static void verification(int M) {
+		if(M!=-1)
+			System.out.println("Musician added.");
+		else
+			System.out.println("This instrument doesn't exist.");
 	}
 }
